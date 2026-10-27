@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Performance Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">STUDENT ANALYTICS</p>
+      <h1>Performance Dashboard</h1>
+      <p class="subtitle">Track marks, attendance, and academic progress.</p>
+    </div>
+    <button id="exportBtn" class="secondary-btn">Export CSV</button>
+  </header>
+
+  <main class="container">
+    <section class="stats-grid">
+      <article class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></article>
+      <article class="stat-card"><span>Class Average</span><strong id="classAverage">0%</strong></article>
+      <article class="stat-card"><span>Average Attendance</span><strong id="avgAttendance">0%</strong></article>
+      <article class="stat-card"><span>Needs Improvement</span><strong id="needsHelp">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div><h2>Add Student</h2><p>Enter marks out of 100 for five subjects.</p></div>
+      </div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label>Student name<input id="name" name="name" placeholder="e.g. Arun Kumar" required maxlength="60" /></label>
+          <label>Register number<input id="regNo" name="regNo" placeholder="e.g. CSBS001" required maxlength="20" /></label>
+          <label>Attendance (%)<input id="attendance" name="attendance" type="number" min="0" max="100" value="90" required /></label>
+          <label>Mathematics<input id="maths" name="maths" type="number" min="0" max="100" required /></label>
+          <label>Programming<input id="programming" name="programming" type="number" min="0" max="100" required /></label>
+          <label>Computer Science<input id="cs" name="cs" type="number" min="0" max="100" required /></label>
+          <label>English<input id="english" name="english" type="number" min="0" max="100" required /></label>
+          <label>Statistics<input id="statistics" name="statistics" type="number" min="0" max="100" required /></label>
+        </div>
+        <button class="primary-btn" type="submit">Add Student</button>
+        <p id="formMessage" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading table-heading">
+        <div><h2>Student Records</h2><p>Search, review, and remove records.</p></div>
+        <input id="searchInput" class="search" placeholder="Search by name or register no..." aria-label="Search students" />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Student</th><th>Reg. No.</th><th>Average</th><th>Attendance</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="studentRows"></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="empty-state">No student records yet. Add a student above to get started.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Subject Performance</h2><p>Average marks across all saved students.</p></div></div>
+      <div id="subjectChart" class="chart" role="img" aria-label="Average marks by subject"></div>
+    </section>
+    <footer>Student Performance Dashboard · Built with HTML, CSS, and JavaScript</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
